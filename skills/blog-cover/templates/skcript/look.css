@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..700&display=block');
+/* Skcript blog-cover look. SHARED and READ-ONLY: every cover imports it
+   (`import '../cover-_template/look.css'`), nobody edits it per cover.
+   Stage is 640 x 360, filmed at 2x = 1280 x 720, shown at 384 x 216 (0.6x),
+   so real words are 15px or larger and the focal string 20 to 32px. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url('https://cdn.skcript.com/fonts/inter/InterVariable.woff2') format('woff2-variations');
+}
+
+.skc .ss-stage {
+  --sk-red: oklch(0.6028 0.2458 29.44);
+  --sk-ink: oklch(0.1646 0.0031 62.98);
+  --sk-field: oklch(0.955 0.003 286); /* light field: off-white gray, never pure white */
+  --sk-field-dark: oklch(0.1646 0.0031 62.98);
+  --ss-accent: var(--sk-red);
+  --ss-accent-2: var(--sk-red);
+  --ss-accent-soft: oklch(0.6028 0.2458 29.44 / 0.1);
+  --ss-accent-text: oklch(0.54 0.22 29.44);
+  --ss-danger: var(--sk-red);
+  --ss-danger-soft: oklch(0.6028 0.2458 29.44 / 0.12);
+  --ss-danger-text: oklch(0.54 0.22 29.44);
+  --ss-term-err: oklch(0.7 0.19 29.44);
+  --ss-font: 'Inter', system-ui, sans-serif;
+  --ss-radius-window: 14px;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--sk-field);
+  font-feature-settings: 'cv11', 'ss01';
+}
+.skc .ss-stage:not([data-theme='dark']) { --ss-text-strong: var(--sk-ink); }
+/* Dark field: one step under the dark window so the window reads by surface, not glow */
+.skc .ss-stage[data-theme='dark'] {
+  background: oklch(0.13 0.003 63);
+  /* Signal red lifted one step so it holds on dark surfaces */
+  --ss-accent: oklch(0.66 0.22 29.44);
+  --ss-accent-text: oklch(0.72 0.18 29.44);
+}
+/* Warm-paper field, for letters, receipts, documents */
+.skc.skc-paper .ss-stage { background: oklch(0.955 0.018 88); }
+
+.skc .ss-stage {
+  --ss-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Terminals stay neutral: red is the one accent and belongs to the focal thing */
+  --ss-term-path: oklch(0.62 0 0);
+  --ss-term-sigil: oklch(0.62 0 0);
+  --ss-term-ok: oklch(0.86 0 0);
+  --ss-term-dim: oklch(0.55 0 0);
+}
+
+/* Template-only styles (copied covers use their own cover.css) */
+.cv-tpl {
+  .cv-tpl-win { position: absolute; top: 56px; left: 56px; width: 640px; height: 400px; box-shadow: var(--ss-shadow-hero); }
+  .cv-tpl-body { display: grid; gap: 12px; padding: 24px; background: var(--ss-surface); min-height: 100%; }
+  .cv-tpl-focus { font-size: 22px; font-weight: 600; color: var(--ss-text-strong); }
+}

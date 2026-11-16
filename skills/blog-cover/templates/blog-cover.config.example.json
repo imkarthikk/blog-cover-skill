@@ -1,0 +1,10 @@
+{
+  "posts": "content/posts",
+  "out": "static/blog-covers",
+  "sources": "design/blog-covers",
+  "template": "design/blog-covers/cover-_template",
+  "port": 5290,
+  "check": "bun run check:covers",
+  "preview": "http://localhost:5173/blog",
+  "cardSize": [384, 216]
+}
